@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Little Surprise</title>
+    <title>A Special Surprise</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -13,7 +13,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #fdf2f8;
+            background-color: #fff0f3;
             font-family: 'Quicksand', sans-serif;
             overflow: hidden;
             text-align: center;
@@ -21,25 +21,30 @@
 
         .container {
             background: white;
-            padding: 2rem;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4);
             max-width: 400px;
             width: 85%;
             z-index: 10;
-            position: relative;
         }
 
-        h1 { color: #db2777; font-family: 'Dancing Script', cursive; font-size: 2.2rem; margin-bottom: 10px; }
-        p { color: #666; line-height: 1.5; font-size: 1.1rem; min-height: 50px; }
+        h1 { color: #ff4d6d; font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 10px; }
+        p { color: #594e50; line-height: 1.6; font-size: 1.1rem; min-height: 60px; }
+
+        .gif-container {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
         .gif-container img {
-            width: 100%;
-            max-width: 200px;
-            height: 200px;
-            object-fit: contain;
-            border-radius: 15px;
-            margin-bottom: 15px;
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 20px;
         }
 
         .btn-group {
@@ -47,29 +52,33 @@
             justify-content: center;
             gap: 20px;
             margin-top: 20px;
-            height: 50px; /* Maintains layout when buttons move */
+            min-height: 50px;
         }
 
         button {
-            padding: 12px 30px;
+            padding: 12px 35px;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
         }
 
-        .yes-btn { background-color: #ec4899; color: white; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3); }
+        .yes-btn { 
+            background: linear-gradient(45deg, #ff4d6d, #ff758f);
+            color: white; 
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3); 
+        }
+
         .no-btn { 
-            background-color: #f3f4f6; 
-            color: #9ca3af; 
+            background-color: #eeeeee; 
+            color: #888; 
             position: relative;
-            z-index: 999;
         }
 
         #reveal-section { display: none; }
-        .reveal-text { font-size: 1.2rem; color: #be185d; font-weight: 600; margin-top: 15px; }
+        .reveal-text { font-size: 1.2rem; color: #c9184a; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -77,10 +86,10 @@
 <div class="container" id="game-box">
     <div id="interactive-content">
         <div class="gif-container">
-            <img id="main-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueG52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3pueG52NWFycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif" alt="Cute kitten">
+            <img id="main-gif" src="https://media.tenor.com/7S879fS99S8AAAAi/hello-cute.gif" alt="Cute animation">
         </div>
-        <h1 id="question-title">Hi there!</h1>
-        <p id="sub-text">I have a few questions for you... ready?</p>
+        <h1 id="question-title">Hi! Quick question...</h1>
+        <p id="sub-text">Are you ready to see something sweet?</p>
         
         <div class="btn-group">
             <button class="yes-btn" onclick="nextQuestion()">Yes!</button>
@@ -90,10 +99,10 @@
 
     <div id="reveal-section">
         <div class="gif-container">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbm52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3pueG52NWFycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L4lvBzeIlMlr70U7at/giphy.gif" alt="Love">
+            <img src="https://media.tenor.com/T09_Yp7q6m8AAAAi/milk-and-mocha-love.gif" alt="Final Surprise">
         </div>
         <h1>Yay! ❤️</h1>
-        <p class="reveal-text">Check your messages soon! Something special is coming your way just because you're you.</p>
+        <p class="reveal-text">Since it's Unofficial Flowers Day, check your messages soon—there is a surprise coming your way!</p>
     </div>
 </div>
 
@@ -102,26 +111,34 @@
     
     const steps = [
         {
-            q: "Are you having a good day?",
-            s: "I hope it's as bright as your smile!",
-            g: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0bnJzZ2V6bWZ6eG52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3AmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/S9oNGC1E42S3u/giphy.gif"
+            q: "Are you feeling good today?",
+            s: "I hope you are, because you deserve to!",
+            g: "https://media.tenor.com/6X73h9779_MAAAAi/peach-goma.gif"
         },
         {
-            q: "Do you know you're wonderful?",
-            s: "Just double checking the facts here.",
-            g: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2YyNDM2NjlkYjYyZTQ3YmRjNDU1Njc4ZjA1YjYyZTQ3YmRjNDU1Njc4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/Y4S3YyN4Q0o6e3yN4O/giphy.gif"
+            q: "Do you know you're amazing?",
+            s: "I just wanted to make sure you didn't forget.",
+            g: "https://media.tenor.com/vH_p8pIDUf0AAAAi/kakaofriends-choonsik.gif"
         },
         {
-            q: "Are you ready for a surprise?",
-            s: "It's almost time...",
-            g: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmc3Y3l0bjZ3ZzR2eXN5bm1oZ3YyYm96Ym96Ym96Ym96Ym96Ym96JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/C2yXWpS8pIFA36E63A/giphy.gif"
-        },
-        {
-            q: "Can I send you something?",
-            s: "It's a digital gift (for now)!",
-            g: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHpueG52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3pueG52NWFycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif"
+            q: "Can I send you a little something?",
+            s: "It's a small gesture to make you smile!",
+            g: "https://media.tenor.com/Z9W6X5_uK_oAAAAi/flowers-cute.gif"
         }
     ];
+
+    function moveNoButton() {
+        const noBtn = document.getElementById('no-btn');
+        const container = document.getElementById('game-box');
+        
+        // Ensure it stays within the window but doesn't get stuck behind the container
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        
+        noBtn.style.position = 'fixed';
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
 
     function nextQuestion() {
         // Reset No button position for the next screen
@@ -140,22 +157,10 @@
         }
     }
 
-    function moveNoButton() {
-        const noBtn = document.getElementById('no-btn');
-        // Calculate random position within the viewport, with a small padding
-        const padding = 50;
-        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - padding);
-        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - padding);
-        
-        noBtn.style.position = 'fixed';
-        noBtn.style.left = `${x}px`;
-        noBtn.style.top = `${y}px`;
-    }
-
     function showFinalReveal() {
         document.getElementById('interactive-content').style.display = 'none';
         document.getElementById('reveal-section').style.display = 'block';
-        document.body.style.backgroundColor = "#fce7f3";
+        document.body.style.backgroundColor = "#ffccd5";
     }
 </script>
 
