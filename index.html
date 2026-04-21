@@ -29,7 +29,7 @@
             z-index: 10;
         }
 
-        h1 { color: #ff4d6d; font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin-bottom: 10px; }
+        h1 { color: #ff4d6d; font-family: 'Dancing Script', cursive; font-size: 2.2rem; margin-bottom: 10px; }
         p { color: #594e50; line-height: 1.6; font-size: 1.1rem; min-height: 60px; }
 
         .gif-container {
@@ -86,10 +86,10 @@
 <div class="container" id="game-box">
     <div id="interactive-content">
         <div class="gif-container">
-            <img id="main-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnc3Y3l0bjZ3ZzR2eXN5bm1oZ3YyYm96Ym96Ym96Ym96Ym96Ym96JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/MDJ9IbxxvDUQM/giphy.gif" alt="Cute animation">
+            <img id="main-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHpueG52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3pueG52NWFycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute animation">
         </div>
-        <h1 id="question-title">Hi! Quick question...</h1>
-        <p id="sub-text">Are you ready to see something sweet?</p>
+        <h1 id="question-title">Wait...</h1>
+        <p id="sub-text">I have a few questions for you. Are you ready?</p>
         
         <div class="btn-group">
             <button class="yes-btn" onclick="nextQuestion()">Yes!</button>
@@ -99,7 +99,7 @@
 
     <div id="reveal-section">
         <div class="gif-container">
-            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbm52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3pueG52NWFycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L4lvBzeIlMlr70U7at/giphy.gif" alt="Final Surprise">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHpueG52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3pueG52NWFycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Final Surprise">
         </div>
         <h1>Yay! ❤️</h1>
         <p class="reveal-text">Since it's Unofficial Flowers Day, check your messages soon—there is a surprise coming your way!</p>
@@ -109,21 +109,39 @@
 <script>
     let currentStep = 0;
     
+    // Using the same GIF for every step as requested
+    const targetGif = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHpueG52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3pueG52NWFycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif";
+
     const steps = [
         {
-            q: "Are you feeling good today?",
-            s: "I hope you are, because you deserve to!",
-            g: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0bnJzZ2V6bWZ6eG52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3AmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/S9oNGC1E42S3u/giphy.gif"
+            q: "Are you having a good day?",
+            s: "I hope it's as wonderful as you are!",
+            g: targetGif
         },
         {
-            q: "Do you know you're amazing?",
-            s: "I just wanted to make sure you didn't forget.",
-            g: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2YyNDM2NjlkYjYyZTQ3YmRjNDU1Njc4ZjA1YjYyZTQ3YmRjNDU1Njc4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/Y4S3YyN4Q0o6e3yN4O/giphy.gif"
+            q: "Do you know you're incredible?",
+            s: "Just making sure you remember the facts.",
+            g: targetGif
         },
         {
-            q: "Can I send you a little something?",
-            s: "It's a small gesture to make you smile!",
-            g: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHpueG52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3pueG52NWFycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif"
+            q: "Do you like surprises?",
+            s: "Because I have a small one for you...",
+            g: targetGif
+        },
+        {
+            q: "Are you smiling right now?",
+            s: "I bet you look beautiful smiling.",
+            g: targetGif
+        },
+        {
+            q: "Almost there... ready?",
+            s: "One last thing to ask...",
+            g: targetGif
+        },
+        {
+            q: "Can I send you something?",
+            s: "It's a little gesture to brighten your day!",
+            g: targetGif
         }
     ];
 
