@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Surprise for You</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffeef2;
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
+            z-index: 10;
+        }
+
+        h1 { color: #d63384; font-family: 'Dancing Script', cursive; font-size: 2.5rem; }
+        p { color: #555; line-height: 1.6; }
+
+        .gif-container img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        #next-btn, #yes-btn { background-color: #ff4d8d; color: white; }
+        #no-btn { background-color: #aaa; color: white; }
+
+        button:hover { transform: scale(1.05); }
+
+        /* Secret Bouquet Styles */
+        #bouquet { display: none; }
+        .flower-text { font-size: 1.2rem; color: #d63384; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container" id="game-box">
+    <div id="content">
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueG52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3pueG52NWFycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif" alt="Cute cat">
+        </div>
+        <h1 id="question-text">Wait... I have a question...</h1>
+        <p id="sub-text">Are you ready for a tiny surprise?</p>
+        <div class="btn-group">
+            <button id="next-btn" onclick="nextQuestion()">Yes, I'm ready!</button>
+        </div>
+    </div>
+
+    <div id="bouquet">
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnB5bnJzZ2V6bWZ6eG52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3AmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/ZZYfscK9Xn2bK/giphy.gif" alt="Flowers">
+        </div>
+        <h1>Happy Unofficial Flowers Day! 🌸</h1>
+        <p class="flower-text">Since I can't be there to give them to you in person, here is a digital bouquet to brighten your day!</p>
+    </div>
+</div>
+
+<script>
+    let currentStep = 0;
+    const questions = [
+        {
+            q: "First of all... did you know you're amazing?",
+            s: "Just checking if you're aware of the facts.",
+            g: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0bnJzZ2V6bWZ6eG52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3AmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/S9oNGC1E42S3u/giphy.gif",
+            btn: "Of course! (or maybe?)"
+        },
+        {
+            q: "Do you think you deserve something sweet today?",
+            s: "Hint: The answer is definitely yes.",
+            g: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHpueG52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3pueG52NWFycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L4lvBzeIlMlr70U7at/giphy.gif",
+            btn: "I think so..."
+        },
+        {
+            q: "Final Question: Can I send you some flowers?",
+            s: "They are digital, but the thought is 100% real.",
+            g: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHpueG52NWFycW9nd3F3Y3pueG52NWFycW9nd3F3Y3pueG52NWFycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif",
+            btn: "YES!"
+        }
+    ];
+
+    function nextQuestion() {
+        if (currentStep < questions.length) {
+            document.getElementById('question-text').innerText = questions[currentStep].q;
+            document.getElementById('sub-text').innerText = questions[currentStep].s;
+            document.querySelector('.gif-container img').src = questions[currentStep].g;
+            document.getElementById('next-btn').innerText = questions[currentStep].btn;
+            
+            if (currentStep === questions.length - 1) {
+                setupFinalChoice();
+            }
+            currentStep++;
+        } else {
+            showBouquet();
+        }
+    }
+
+    function setupFinalChoice() {
+        const btnGroup = document.querySelector('.btn-group');
+        btnGroup.innerHTML = `
+            <button id="yes-btn" onclick="showBouquet()">YES!</button>
+            <button id="no-btn" onmouseover="moveNoButton()">No</button>
+        `;
+    }
+
+    function moveNoButton() {
+        const btn = document.getElementById('no-btn');
+        const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+        btn.style.position = "fixed";
+        btn.style.left = x + "px";
+        btn.style.top = y + "px";
+    }
+
+    function showBouquet() {
+        document.getElementById('content').style.display = 'none';
+        document.getElementById('bouquet').style.display = 'block';
+        launchConfetti();
+    }
+
+    function launchConfetti() {
+        // Simple background color flash for excitement
+        document.body.style.transition = "background 1s";
+        document.body.style.backgroundColor = "#ffc1d6";
+    }
+</script>
+
+</body>
+</html>
